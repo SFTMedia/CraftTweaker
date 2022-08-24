@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url = "https://maven.minecraftforge.net/"
         }
         maven {
             name = "sonatype"
@@ -13,9 +13,13 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
+            changing = true
+        }
     }
 }
+
+
 
 apply plugin: 'forge'
 
@@ -27,6 +31,9 @@ minecraft {
 version = "1.0"
 archivesBaseName = project.projectDir.name
 
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 dependencies {
 	compile project(':ZenScript')
 	compile project(':MineTweaker3-API')
@@ -35,8 +42,8 @@ dependencies {
 }
 
 task makeRegistry(type: RegisterZenClassesTask) {
-	inputDir = file('build/classes/main')
-	outputDir = file('build/classes/main')
+	inputDir = file('build/classes/java/main')
+	outputDir = file('build/classes/java/main')
 	className = 'minetweaker.mods.nei.ClassRegistry'
 }
 

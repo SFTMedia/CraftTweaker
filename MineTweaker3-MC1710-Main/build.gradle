@@ -5,7 +5,7 @@ buildscript {
         mavenCentral()
         maven {
             name = "forge"
-            url = "http://files.minecraftforge.net/maven"
+            url = "https://maven.minecraftforge.net/"
         }
         maven {
             name = "sonatype"
@@ -13,7 +13,9 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
+        classpath ('com.anatawa12.forge:ForgeGradle:1.2-1.0.+') {
+            changing = true
+        }
     }
 }
 
@@ -22,6 +24,9 @@ apply plugin: 'maven'
 
 version = "1.7.10-" + ext.mineTweakerVersion
 archivesBaseName = project.projectDir.name
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
 
 minecraft {
 	version = forgeVersion1710
@@ -35,8 +40,8 @@ dependencies {
 }
 
 task makeRegistry(type: RegisterZenClassesTask) {
-	inputDir = file('build/classes/main')
-	outputDir = file('build/classes/main')
+	inputDir = file('build/classes/java/main')
+	outputDir = file('build/classes/java/main')
 	className = 'minetweaker.mc1710.MineTweakerRegistry'
 }
 

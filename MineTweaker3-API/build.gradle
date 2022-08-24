@@ -5,12 +5,13 @@ apply plugin: 'maven'
 
 version = ext.mineTweakerVersion
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
 
 task makeRegistry(type: RegisterZenClassesTask) {
-	inputDir = file('build/classes/main')
-	outputDir = file('build/classes/main')
+	inputDir = file('build/classes/java/main')
+	outputDir = file('build/classes/java/main')
 	className = 'minetweaker.ClassRegistry'
 }
 
